@@ -1,15 +1,9 @@
-// generated on 2016-12-02 using generator-webapp 2.3.2
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
-
-const nodemon = require('gulp-nodemon');
-const Cache = require('gulp-file-cache');
-var cache = new Cache();
-const sass        = require('gulp-sass');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -93,10 +87,19 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 //
 gulp.task('sass', function() {
   return gulp.src('app/styles/*.scss')
-    .pipe(sass())
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.']
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('app/public/css'))
     .pipe(browserSync.stream());
 });
+
 
 gulp.task('serve', () => {
 

@@ -5,7 +5,7 @@ const router = new Router();
 router.get('/',  async(ctx, next) => {
   ctx.state = {
     //session: this.session,
-    title: 'Homexxx Page'
+    title: 'Koa 2 Starter Kit'
   };
 
   await ctx.render('index', {
@@ -13,10 +13,10 @@ router.get('/',  async(ctx, next) => {
   });
 });
 
-router.get('/test', async (ctx, next) => {
+router.get('/about', async (ctx, next) => {
   ctx.state = {
     //session: this.session,
-    title: 'About Pagexox'
+    title: 'About Page'
   };
 
   await ctx.render('about', {
@@ -35,5 +35,16 @@ router.get('/login', async (ctx, next) => {
   });
 })
 
+
+router.get('/documentation', async (ctx, next) => {
+  ctx.state = {
+    //session: this.session,
+    title: 'Documentationn Page'
+  };
+
+  await ctx.render('documentation', {
+    user: 'John'
+  });
+})
 
 export default router;
