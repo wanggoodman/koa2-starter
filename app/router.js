@@ -36,13 +36,13 @@ router.get('/login', async (ctx, next) => {
 })
 
 
-router.get('/documentation', async (ctx, next) => {
+router.get('/styleguide', async (ctx, next) => {
   ctx.state = {
     //session: this.session,
     title: 'Documentationn Page'
   };
 
-  await ctx.render('documentation', {
+  await ctx.render('styleguide', {
     user: 'John'
   });
 })
