@@ -1,18 +1,18 @@
-const gulp = require('gulp');
-const gulpLoadPlugins = require('gulp-load-plugins');
+import gulp from 'gulp';
+import gulpLoadPlugins from 'gulp-load-plugins';
 const browserSync = require('browser-sync').create();
-const del = require('del');
-const runSequence = require('run-sequence');
+import del from 'del';
+import runSequence from 'run-sequence';
 
-const browserify = require('browserify');
-const buffer = require('vinyl-buffer');
-const source = require('vinyl-source-stream');
-const babelify = require('babelify');
+import browserify from 'browserify';
+import buffer from 'vinyl-buffer';
+import source from 'vinyl-source-stream';
+import babelify from 'babelify';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-var dev = true;
+let dev = true;
 
 gulp.task('styles', function() {
   return gulp.src('app/styles/*.scss')

@@ -1,16 +1,17 @@
 import Router from 'koa-router';
-
+import fs from 'fs';
 const router = new Router();
 
-router.get('/',  async(ctx, next) => {
-  //ctx.state = {
-    //session: this.session,
-    //title: 'Koa 2 Starter Kit'
-  //};
+router.get('/test', async(ctx, next) => {
+  ctx.type = 'application/json'
+  ctx.body = fs.createReadStream('./package.json')
+})
 
+router.get('/', async(ctx, next) => {
+  const title = await Promise.resolve('Koa 2 Starter Kit')
   await ctx.render('index', {
     active_home: true,
-    title: 'Koa 2 Starter Kit',
+    title,
     subtitle: 'Hello',
     partials: {
       head: './head',
