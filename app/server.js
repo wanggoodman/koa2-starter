@@ -13,8 +13,9 @@ const app = new Koa();
 
 app.use(views(__dirname + '/views', {
   map: {
-    html: 'ejs'
-  }
+    hbs: 'handlebars',
+  },
+  extension: 'hbs',
 }));
 
 app.use(convert(session(app)));

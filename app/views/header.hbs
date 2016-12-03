@@ -14,9 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/styleguide">Styleguide</a></li>
+        <li class="{{#if active_home}}active{{/if}}"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="{{#if active_about}}active{{/if}}"><a href="/about">About</a></li>
+        <li class="{{#if active_styleguide}}active{{/if}}"><a href="/styleguide">Styleguide</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/login">Login</a></li>

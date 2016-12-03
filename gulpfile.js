@@ -62,6 +62,7 @@ function bundle (bundler) {
     .pipe($.sourcemaps.init())
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('app/public/scripts'))
+    .pipe(browserSync.stream());
 }
 
 gulp.task('scripts', function () {

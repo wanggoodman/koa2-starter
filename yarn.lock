@@ -243,7 +243,7 @@ async-foreach@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/async-foreach/-/async-foreach-0.1.3.tgz#36121f845c0578172de419a97dbeb1d16ec34542"
 
-async@^1.2.1, async@1.5.2:
+async@^1.2.1, async@^1.4.0, async@1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
@@ -313,7 +313,7 @@ babel-code-frame@^6.16.0:
     esutils "^2.0.2"
     js-tokens "^2.0.0"
 
-babel-core, babel-core@^6.0.14, babel-core@^6.0.2, babel-core@^6.18.0:
+babel-core, babel-core@^6.0.14, babel-core@^6.18.0:
   version "6.18.2"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.18.2.tgz#d8bb14dd6986fa4f3566a26ceda3964fa0e04e5b"
   dependencies:
@@ -1623,23 +1623,6 @@ co-body@^4.2.0:
     raw-body "~2.1.2"
     type-is "~1.6.6"
 
-co-from-stream@0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/co-from-stream/-/co-from-stream-0.0.0.tgz#1a5cd8ced77263946094fa39f2499a63297bcaf9"
-  dependencies:
-    co-read "0.0.1"
-
-co-fs@~1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/co-fs/-/co-fs-1.2.0.tgz#a6df045ce58c04eed45586ff4385032813aba64e"
-  dependencies:
-    co-from-stream "0.0.0"
-    thunkify "0.0.1"
-
-co-read@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/co-read/-/co-read-0.0.1.tgz#f81b3eb8a86675fec51e3d883a7f564e873c9389"
-
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -1871,10 +1854,6 @@ cookies@~0.6.1:
   dependencies:
     depd "~1.1.0"
     keygrip "~1.0.1"
-
-copy-to@~2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/copy-to/-/copy-to-2.0.1.tgz#2680fbb8068a48d08656b6098092bdafc906f4a5"
 
 core-js@^2.4.0:
   version "2.4.1"
@@ -2350,10 +2329,6 @@ ecc-jsbn@~0.1.1:
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
-
-ejs, ejs@^2.3.4:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.5.3.tgz#bfeae1e2f7fa51c4527769fcaa14c5ca73eb5e47"
 
 elliptic@^6.0.0:
   version "6.3.2"
@@ -3306,17 +3281,6 @@ gulp-autoprefixer@^3.0.1:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-babel:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/gulp-babel/-/gulp-babel-6.1.2.tgz#7c0176e4ba3f244c60588a0c4b320a45d1adefce"
-  dependencies:
-    babel-core "^6.0.2"
-    gulp-util "^3.0.0"
-    object-assign "^4.0.1"
-    replace-ext "0.0.1"
-    through2 "^2.0.0"
-    vinyl-sourcemaps-apply "^0.2.0"
-
 gulp-browserify:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/gulp-browserify/-/gulp-browserify-0.5.1.tgz#820108ac2554a954adb8be17d23958b0c04be083"
@@ -3588,6 +3552,16 @@ gzip-size@^3.0.0:
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-3.0.0.tgz#546188e9bdc337f673772f81660464b389dce520"
   dependencies:
     duplexer "^0.1.1"
+
+handlebars:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.6.tgz#2ce4484850537f9c97a8026d5399b935c4ed4ed7"
+  dependencies:
+    async "^1.4.0"
+    optimist "^0.6.1"
+    source-map "^0.4.4"
+  optionalDependencies:
+    uglify-js "^2.6"
 
 har-validator@~2.0.2, har-validator@~2.0.6:
   version "2.0.6"
@@ -4397,14 +4371,6 @@ koa-convert, koa-convert@^1.2.0:
   dependencies:
     co "^4.6.0"
     koa-compose "^3.0.0"
-
-koa-ejs:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/koa-ejs/-/koa-ejs-3.0.0.tgz#96cea547215c59e890e27a974a74fcad7b95778a"
-  dependencies:
-    co-fs "~1.2.0"
-    copy-to "~2.0.1"
-    ejs "^2.3.4"
 
 koa-is-json@^1.0.0:
   version "1.0.0"
@@ -5406,6 +5372,13 @@ opn@4.0.2:
   dependencies:
     object-assign "^4.0.1"
     pinkie-promise "^2.0.0"
+
+optimist@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
+  dependencies:
+    minimist "~0.0.1"
+    wordwrap "~0.0.2"
 
 optimist@~0.3.5:
   version "0.3.7"
@@ -6698,6 +6671,12 @@ source-map@^0.1.38, source-map@~0.1.30, source-map@~0.1.31, source-map@~0.1.7:
   dependencies:
     amdefine ">=0.0.4"
 
+source-map@^0.4.4, source-map@0.4.x:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
+  dependencies:
+    amdefine ">=0.0.4"
+
 source-map@^0.5.0, source-map@^0.5.1, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3, source-map@0.X:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
@@ -6711,12 +6690,6 @@ source-map@~0.3.0:
 source-map@0.1.34:
   version "0.1.34"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.34.tgz#a7cfe89aec7b1682c3b198d0acfb47d7d090566b"
-  dependencies:
-    amdefine ">=0.0.4"
-
-source-map@0.4.x:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
   dependencies:
     amdefine ">=0.0.4"
 
@@ -7138,10 +7111,6 @@ through2@~0.4.0, through2@~0.4.1:
     readable-stream "~1.0.17"
     xtend "~2.1.1"
 
-thunkify@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/thunkify/-/thunkify-0.0.1.tgz#bd5d36b1069b4078e5dcbac8fab45359bea6183d"
-
 tildify@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/tildify/-/tildify-1.2.0.tgz#dcec03f55dca9b7aa3e5b04f21817eb56e63588a"
@@ -7253,6 +7222,15 @@ ua-parser-js@0.7.10:
   version "0.7.10"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.10.tgz#917559ddcce07cbc09ece7d80495e4c268f4ef9f"
 
+uglify-js@^2.6, uglify-js@2.7.x:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
+  dependencies:
+    async "~0.2.6"
+    source-map "~0.5.1"
+    uglify-to-browserify "~1.0.0"
+    yargs "~3.10.0"
+
 uglify-js@~2.2:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.2.5.tgz#a6e02a70d839792b9780488b7b8b184c095c99c7"
@@ -7272,15 +7250,6 @@ uglify-js@~2.4.0:
 uglify-js@2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.0.tgz#f021e38ba2ca740860f5bd5c695c2a817345f0ec"
-  dependencies:
-    async "~0.2.6"
-    source-map "~0.5.1"
-    uglify-to-browserify "~1.0.0"
-    yargs "~3.10.0"
-
-uglify-js@2.7.x:
-  version "2.7.5"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
   dependencies:
     async "~0.2.6"
     source-map "~0.5.1"
