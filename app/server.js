@@ -18,7 +18,7 @@ app.use(views(__dirname + '/views', {
 }));
 
 app.use(convert(session(app)));
-app.keys = ['verysecretyes'];
+app.keys = ['verysecretkeys'];
 app.use(bodyParser());
 app.use(serve(__dirname + '/public'));
 app.use(errorHandle())

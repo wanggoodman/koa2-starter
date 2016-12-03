@@ -4,6 +4,11 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const runSequence = require('run-sequence');
 
+const browserify = require('browserify');
+const buffer = require('vinyl-buffer');
+const source = require('vinyl-source-stream');
+const babelify = require('babelify');
+
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -24,22 +29,49 @@ gulp.task('styles', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('scripts', () => {
-  return gulp.src('app/scripts/**/*.js')
-    .pipe($.plumber())
+//gulp.task('scripts', () => {
+//  return gulp.src('app/scripts/**/*.js')
+  /*  .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(reload({stream: true}));
-});
+});*/
 
-//gulp.task('js', function () {
-//    return gulp.src('app/scripts/**/*.js')
-//        .pipe(browserify())
-//        .pipe(uglify())
-//        .pipe(gulp.dest('app/public/script'));
-//});
+
+//gulp.task('scripts', function () {
+    //return gulp.src('app/scripts/**/*.js')
+  /*      .pipe($.browserify())
+        .pipe($.babel({
+            presets: ['es2015', 'stage-0']
+        }))
+        .pipe($.uglify())
+        .pipe(gulp.dest('app/public/scripts'))
+        //.pipe(reload({stream: true}));
+        //.pipe(browserSync.stream());
+});*/
+
+function bundle (bundler) {
+  bundler
+    .bundle()
+    .pipe(source('app/scripts/main.js'))
+    .pipe(buffer())
+    .pipe($.rename('bundle.js'))
+    .pipe($.uglify())
+    .pipe($.sourcemaps.init())
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('app/public/scripts'))
+}
+
+gulp.task('scripts', function () {
+    var bundler = browserify('app/scripts/main.js')
+      .transform(babelify, {
+        presets : [ 'es2015', 'stage-0'],
+      });
+
+    bundle(bundler);  // Chain other options -- sourcemaps, rename, etc.
+})
 
 function lint(files, options) {
   return gulp.src(files)
@@ -95,7 +127,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
 
-  runSequence(['clean'], ['styles', 'scripts', 'fonts'], () => {
+  runSequence(['clean'], [/*'scripts',*/ 'styles', 'fonts'], () => {
     browserSync.init({
       notify: false,
       port: 9000,
@@ -109,7 +141,7 @@ gulp.task('serve', () => {
     });
 
     gulp.watch([
-      'app/*.js',
+      'app/scripts/*.js',
       'app/views/*.html',
       'app/images/**/*',
       '.tmp/fonts/**/*'
