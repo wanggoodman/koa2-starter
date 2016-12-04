@@ -1,0 +1,34 @@
+<nav class="navbar navbar-inverse">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" height="20" width="20" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDUzMy4zMzMgNTMzLjMzMyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTMzLjMzMyA1MzMuMzMzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTE2NS40OTQsNTMzLjMzM2MtMzUuNTQ1LTczLjk2Mi0xNi42MTYtMTE2LjM0MywxMC43MDMtMTU2LjI3MmMyOS45MTctNDMuNzI4LDM3LjYyNy04Ny4wMTMsMzcuNjI3LTg3LjAxMyAgIHMyMy41MTgsMzAuNTczLDE0LjExLDc4LjM5YzQxLjU0OC00Ni4yNSw0OS4zODktMTE5LjkzOCw0My4xMTUtMTQ4LjE1OWM5My45MTQsNjUuNjMsMTM0LjA1MSwyMDcuNzM3LDc5Ljk2LDMxMy4wNTQgICBjMjg3LjY5NS0xNjIuNzc2LDcxLjU2Mi00MDYuMzM5LDMzLjkzNC00MzMuNzc1YzEyLjU0MywyNy40MzUsMTQuOTIyLDczLjg4LTEwLjQxNiw5Ni40MkMzMzEuNjM1LDMzLjMzMywyMjUuNTgzLDAsMjI1LjU4MywwICAgYzEyLjU0Myw4My44NzctNDUuNDY2LDE3NS41OTYtMTAxLjQwNCwyNDQuMTNjLTEuOTY1LTMzLjQ0Ni00LjA1My01Ni41MjUtMjEuNjQxLTg4LjUzMSAgIEM5OC41OSwyMTYuMzU3LDUyLjE1NywyNjUuODg0LDM5LjU4MywzMjYuNzZDMjIuNTUxLDQwOS4yLDUyLjM0MSw0NjkuNTYyLDE2NS40OTQsNTMzLjMzM3oiIGZpbGw9IiNGRkZGRkYiLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="{{#if active_home}}active{{/if}}"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="{{#if active_about}}active{{/if}}"><a href="/about">About</a></li>
+        <li class="{{#if active_styleguide}}active{{/if}}"><a href="/styleguide">Styleguide</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{#if user}}
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/logout">Logout</a></li>
+        {{else}}
+          <li><a href="/login">Login</a></li>
+          <li><a href="/login">Sign Up</a></li>
+        {{/if}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

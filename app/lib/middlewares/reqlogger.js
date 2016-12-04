@@ -1,9 +1,12 @@
 export default function reqLogger() {
   return async (ctx, next) => {
-    // filter browsersync requests
-    if(ctx.url.split('/')[1] !== 'sockjs-node'){
-        console.log('%s - %s %s',new Date().toISOString(), ctx.method, ctx.url);
-    }
-    await next();
+  const startTime = Date.now();
+
+  await next();
+
+  const timeToProcess = Date.now() - startTime;
+  const fullUrl = `${ctx.protocol}://${ctx.host}${ctx.originalUrl}`;
+
+  console.log(`${ctx.method} ${fullUrl} - ${timeToProcess}`);
   }
 }

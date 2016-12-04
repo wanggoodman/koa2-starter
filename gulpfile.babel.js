@@ -8,7 +8,13 @@ import browserify from 'browserify';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
 import babelify from 'babelify';
+import color from 'cli-color';
+import nodemon from 'gulp-nodemon';
+const Cache = require('gulp-file-cache')
 
+var babel = require('gulp-babel');
+
+var cache = new Cache();
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -124,7 +130,42 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 
+// server
+gulp.task('copy', ['clean'], function () {
+  return gulp.src('app/**/*')
+    .pipe(gulp.dest('dist'));
+});
 
+gulp.task('compile', function () {
+  return gulp.src(['dist/*.js', 'dist/lib/**/*.js'])
+    .pipe(babel({
+        presets: ['es2015', 'stage-0'],
+        plugins: ['transform-async-to-generator']
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+
+gulp.task('nodemon', function(){
+  nodemon({
+    script: 'app/server.js',
+    ext: 'hbs js',
+    watch: [
+      'app/server.js',
+      'app/views/',
+    ],
+    ignore: 'app/public'
+  })
+  .on('start', () =>
+    setTimeout(() => reload(), 2000)
+  )
+  .on('crash', () => {
+    console.log(color.red('Stopping server due to an error'));
+  })
+  .on('exit', function () {
+        console.info(color.cyan('Shutting down'));
+  });
+});
 
 gulp.task('serve', () => {
 
@@ -154,6 +195,10 @@ gulp.task('serve', () => {
     //gulp.watch('bower.json', ['wiredep', 'fonts']);
   });
 });
+
+
+
+
 
 gulp.task('serve:dist', ['default'], () => {
   browserSync.init({
