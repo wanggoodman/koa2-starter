@@ -1,39 +1,30 @@
-var passport = require('koa-passport')
-const LocalStrategy = require('passport-local').Strategy
+import passport from 'koa-passport'
+import { Strategy as LocalStrategy } from 'passport-local'
 
-var user = { id: 1, username: 'test', avartar: 'https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg' }
+//import { localLogin } from './local'
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.id)
 })
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser((id, done) => {
   done(null, user)
 })
 
-passport.use(new LocalStrategy((username, password, done) => {
-  // retrieve user ...
-  console.log('yo')
-  console.log(username, password)
+//passport.use('local-login', localLogin)
+var user = {
+  id: 1,
+  username: 'test',
+  avartar: 'https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg'
+}
+const local = new LocalStrategy((username, password, done) => {
   if (username === 'test' && password === 'test') {
     done(null, user)
   } else {
     done(null, false)
   }
-}))
+})
+passport.use(local)
 
-module.exports = passport;
 
-/*
-var FacebookStrategy = require('passport-facebook').Strategy
-passport.use(new FacebookStrategy({
-    clientID: 'your-client-id',
-    clientSecret: 'your-secret',
-    callbackURL: 'http://localhost:' + (process.env.PORT || 3000) + '/auth/facebook/callback'
-  },
-  function(token, tokenSecret, profile, done) {
-    // retrieve user ...
-    done(null, user)
-  }
-))
-*/
+export default passport;
