@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import Koa from 'koa';
 import koaRouter from 'koa-router';
 import serve from 'koa-static';
