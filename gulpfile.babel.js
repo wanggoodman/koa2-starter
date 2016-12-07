@@ -10,9 +10,8 @@ import source from 'vinyl-source-stream';
 import babelify from 'babelify';
 import color from 'cli-color';
 import nodemon from 'gulp-nodemon';
-const Cache = require('gulp-file-cache')
-
-var babel = require('gulp-babel');
+import Cache from 'gulp-file-cache';
+import babel from 'gulp-babel';
 
 var cache = new Cache();
 const $ = gulpLoadPlugins();
@@ -34,29 +33,6 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('app/public/css'))
     .pipe(browserSync.stream());
 });
-
-//gulp.task('scripts', () => {
-//  return gulp.src('app/scripts/**/*.js')
-  /*  .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.babel())
-    .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('.tmp/scripts'))
-    .pipe(reload({stream: true}));
-});*/
-
-
-//gulp.task('scripts', function () {
-    //return gulp.src('app/scripts/**/*.js')
-  /*      .pipe($.browserify())
-        .pipe($.babel({
-            presets: ['es2015', 'stage-0']
-        }))
-        .pipe($.uglify())
-        .pipe(gulp.dest('app/public/scripts'))
-        //.pipe(reload({stream: true}));
-        //.pipe(browserSync.stream());
-});*/
 
 function bundle (bundler) {
   bundler
@@ -92,18 +68,10 @@ gulp.task('lint', () => {
   return lint('app/scripts/**/*.js')
     .pipe(gulp.dest('app/scripts'));
 });
+
 gulp.task('lint:test', () => {
   return lint('test/spec/**/*.js')
     .pipe(gulp.dest('test/spec'));
-});
-
-gulp.task('html', ['styles', 'scripts'], () => {
-  return gulp.src('app/views/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'app/views/', '.']}))
-    .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
-    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
-    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('images', () => {
@@ -136,79 +104,28 @@ gulp.task('copy', ['clean'], function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('compile', function () {
-  return gulp.src(['dist/*.js', 'dist/lib/**/*.js'])
-    .pipe(babel({
-        presets: ['es2015', 'stage-0'],
-        plugins: ['transform-async-to-generator']
-    }))
-    .pipe(gulp.dest('dist'));
-});
-
-
-gulp.task('nodemon', function(){
-  nodemon({
-    script: 'app/server.js',
-    ext: 'hbs js',
-    watch: [
-      'app/server.js',
-      'app/views/',
-    ],
-    ignore: 'app/public'
-  })
-  .on('start', () =>
-    setTimeout(() => reload(), 2000)
-  )
-  .on('crash', () => {
-    console.log(color.red('Stopping server due to an error'));
-  })
-  .on('exit', function () {
-        console.info(color.cyan('Shutting down'));
-  });
-});
 
 gulp.task('serve', () => {
 
-  runSequence(['clean'], [/*'scripts',*/ 'styles', 'fonts'], () => {
+  runSequence(['clean'], [ 'styles', 'fonts'], () => {
     browserSync.init({
       notify: false,
       port: 9000,
       proxy: 'http://localhost:3000/',
-      /*server: {
-        baseDir: ['.tmp', 'app/views'],
-        routes: {
-          '/bower_components': 'bower_components'
-        }
-      }*/
     });
 
     gulp.watch([
       'app/scripts/*.js',
-      'app/views/*.html',
-      'app/images/**/*',
-      '.tmp/fonts/**/*'
+      'app/views/**/*.hbs',
+      'app/images/**/*'
     ]).on('change', reload);
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/fonts/**/*', ['fonts']);
-    //gulp.watch('bower.json', ['wiredep', 'fonts']);
   });
 });
 
-
-
-
-
-gulp.task('serve:dist', ['default'], () => {
-  browserSync.init({
-    notify: false,
-    port: 9000,
-    server: {
-      baseDir: ['dist']
-    }
-  });
-});
 
 gulp.task('serve:test', ['scripts'], () => {
   browserSync.init({
@@ -229,9 +146,6 @@ gulp.task('serve:test', ['scripts'], () => {
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
-});
 
 gulp.task('default', () => {
   return new Promise(resolve => {

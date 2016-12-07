@@ -1,13 +1,14 @@
+// type
 @import "node_modules/roboto-fontface/css/roboto/sass/roboto-fontface.scss";
-$icon-font-path: '../fonts/';
 
+// variables
 @import "./_variables.scss";
 
+// vendor
 @import "node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
-
+// components
 @import "./components/footer.scss";
-
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -16,9 +17,7 @@ $icon-font-path: '../fonts/';
   padding: 0.2em 0;
 }
 
-
 main {
-
   min-height: 80vh;
   padding-top: 50px;
 }
