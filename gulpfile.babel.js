@@ -20,7 +20,7 @@ const reload = browserSync.reload;
 let dev = true;
 
 gulp.task('styles', function() {
-  return gulp.src('app/styles/*.scss')
+  return gulp.src('src/styles/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -30,25 +30,25 @@ gulp.task('styles', function() {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('app/public/css'))
+    .pipe(gulp.dest('src/public/css'))
     .pipe(browserSync.stream());
 });
 
 function bundle (bundler) {
   bundler
     .bundle()
-    .pipe(source('app/scripts/main.js'))
+    .pipe(source('src/scripts/main.js'))
     .pipe(buffer())
     .pipe($.rename('bundle.js'))
     .pipe($.uglify())
     .pipe($.sourcemaps.init())
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('app/public/scripts'))
+    .pipe(gulp.dest('src/public/scripts'))
     .pipe(browserSync.stream());
 }
 
 gulp.task('scripts', function () {
-    var bundler = browserify('app/scripts/main.js')
+    var bundler = browserify('src/scripts/main.js')
       .transform(babelify, {
         presets : [ 'es2015', 'stage-0'],
       });
@@ -65,8 +65,8 @@ function lint(files, options) {
 }
 
 gulp.task('lint', () => {
-  return lint('app/scripts/**/*.js')
-    .pipe(gulp.dest('app/scripts'));
+  return lint('src/scripts/**/*.js')
+    .pipe(gulp.dest('src/scripts'));
 });
 
 gulp.task('lint:test', () => {
@@ -75,14 +75,14 @@ gulp.task('lint:test', () => {
 });
 
 gulp.task('images', () => {
-  return gulp.src('app/images/**/*')
+  return gulp.src('src/images/**/*')
     .pipe($.cache($.imagemin()))
     .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
-    .concat('app/fonts/**/*'))
+    .concat('src/fonts/**/*'))
     .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
 });
 
@@ -100,7 +100,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // server
 gulp.task('copy', ['clean'], function () {
-  return gulp.src('app/**/*')
+  return gulp.src('src/**/*')
     .pipe(gulp.dest('dist'));
 });
 
@@ -115,14 +115,14 @@ gulp.task('serve', () => {
     });
 
     gulp.watch([
-      'app/scripts/*.js',
-      'app/views/**/*.hbs',
-      'app/images/**/*'
+      'src/scripts/*.js',
+      'src/views/**/*.hbs',
+      'src/images/**/*'
     ]).on('change', reload);
 
-    gulp.watch('app/styles/**/*.scss', ['styles']);
-    gulp.watch('app/scripts/**/*.js', ['scripts']);
-    gulp.watch('app/fonts/**/*', ['fonts']);
+    gulp.watch('src/styles/**/*.scss', ['styles']);
+    gulp.watch('src/scripts/**/*.js', ['scripts']);
+    gulp.watch('src/fonts/**/*', ['fonts']);
   });
 });
 
@@ -141,7 +141,7 @@ gulp.task('serve:test', ['scripts'], () => {
     }
   });
 
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
+  gulp.watch('src/scripts/**/*.js', ['scripts']);
   gulp.watch(['test/spec/**/*.js', 'test/index.html']).on('change', reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });

@@ -1,4 +1,4 @@
-import passport from '../lib/passport';
+import passport from '../middleware/passport';
 
 const page = async (ctx, next) => {
 

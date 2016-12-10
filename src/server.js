@@ -11,10 +11,10 @@ import favicon from 'koa-favicon';
 const config = require('./config')
 
 // middleware
-import passport from './lib/passport';
+import passport from './middleware/passport';
 import router from './router';
-import errorHandle from './lib/middlewares/errorHandle';
-import reqLogger from './lib/middlewares/reqlogger';
+import errorHandle from './middleware/errorHandle';
+import reqLogger from './middleware/reqlogger';
 
 const app = new Koa();
 

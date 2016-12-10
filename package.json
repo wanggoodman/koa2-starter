@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "start": "gulp serve & PORT=3000 NODE_ENV=development LOGGER_LEVEL=silly LOGGER_ENABLED=true SESSION_KEY=koasess nodemon app/server.js --exec babel-node",
-    "build": "babel app --out-dir build --copy-files",
+    "start": "gulp serve & PORT=3000 NODE_ENV=development LOGGER_LEVEL=silly LOGGER_ENABLED=true SESSION_KEY=koasess nodemon src/server.js --exec babel-node",
+    "build": "babel src --out-dir build --copy-files",
     "prod": "PORT=3000 NODE_ENV=development LOGGER_LEVEL=silly LOGGER_ENABLED=true SESSION_KEY=koasess node build/server.js"
   },
   "author": "andy fenelon",
@@ -77,7 +77,7 @@
       "transform-async-to-generator"
     ],
     "ignore": [
-      "app/public/scripts/**",
+      "src/public/scripts/**",
       "build/public/scripts/**"
     ]
   },
