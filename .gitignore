@@ -2,7 +2,5 @@ node_modules
 npm-debug.log
 build
 .tmp
-bower_components
-test/bower_components
 yarn-error.log
 build
