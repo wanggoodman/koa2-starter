@@ -8,7 +8,7 @@ import convert from 'koa-convert';
 import compression from 'koa-compress';
 import favicon from 'koa-favicon';
 
-const config = require('./config')
+import config from './config';
 
 // middleware
 import passport from './middleware/passport';
@@ -27,7 +27,8 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(reqLogger())
 app.use(convert(session(app)));
 app.use(compression());
-app.use(bodyParser());
+// app.use(bodyParser({ enableTypes: ['json'] }))
+app.use(bodyParser())
 app.use(errorHandle())
 
 app.keys = ['your-session-secret', 'another-session-secret'];
