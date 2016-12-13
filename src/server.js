@@ -27,7 +27,6 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(reqLogger())
 app.use(convert(session(app)));
 app.use(compression());
-// app.use(bodyParser({ enableTypes: ['json'] }))
 app.use(bodyParser())
 app.use(errorHandle())
 

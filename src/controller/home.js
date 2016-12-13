@@ -16,7 +16,7 @@ const home = async(ctx, next) => {
       footer: './partials/footer'
     },
   });
-  
+
 };
 
 export default home;

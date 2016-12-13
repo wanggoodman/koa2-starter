@@ -6,8 +6,15 @@
     {{> header}}
 
     <main class="container">
-      <h1>{{title}}</h1>
-      {{subtitle}}
+      <p>Page views: {{page_views}}</p>
+      <br>
+
+      <h1>Stack</h1>
+      {{#each stack}}
+        <p><strong>{{roll}} </strong> {{technology}}</p>
+      {{/each}}
+
+
     </main>
 
     {{> footer}}
