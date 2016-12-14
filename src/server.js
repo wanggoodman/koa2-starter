@@ -7,6 +7,9 @@ import session from 'koa-session';
 import convert from 'koa-convert';
 import compression from 'koa-compress';
 import favicon from 'koa-favicon';
+var redisStore = require('koa-redis')({
+  // Options specified here
+});
 
 import config from './config';
 
