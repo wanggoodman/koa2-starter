@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "start": "PORT=3000 NODE_ENV=development LOGGER_LEVEL=silly LOGGER_ENABLED=true SESSION_KEY=koasess node build/server.js",
+    "start": "PORT=3000 NODE_ENV=production LOGGER_LEVEL=silly LOGGER_ENABLED=true SESSION_KEY=koasess node build/server.js",
     "dev": "gulp serve & PORT=3000 NODE_ENV=development LOGGER_LEVEL=silly LOGGER_ENABLED=true SESSION_KEY=koasess nodemon src/server.js",
     "build": "babel src --out-dir build --copy-files"
   },
@@ -80,6 +80,8 @@
       "transform-async-to-generator"
     ],
     "ignore": [
+      "src/public/styles",
+      "src/public/scripts",
       "src/public/scripts/**",
       "build/public/scripts/**"
     ]
