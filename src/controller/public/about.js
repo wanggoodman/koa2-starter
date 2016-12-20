@@ -10,7 +10,7 @@ const about = async (ctx, next) => {
     user: ctx.state.user,
     stack: [
       { roll: 'Server', technology: "Koa2"},
-      { roll: 'Templating', technology: "Hbs"},
+      { roll: 'Templating', technology: "Handlebars"},
       { roll: 'Package management', technology: "Yarn"},
       { roll: 'JS Flavor', technology: "ES2016+"},
       { roll: 'Transpilation', technology: "Babel"},

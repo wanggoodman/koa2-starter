@@ -13,7 +13,6 @@ var redisStore = require('koa-redis')({
 
 import config from './config';
 
-// middleware
 import passport from './middleware/passport';
 import router from './router';
 import errorHandle from './middleware/errorHandle';

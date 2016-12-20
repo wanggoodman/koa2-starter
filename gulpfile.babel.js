@@ -3,6 +3,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 const browserSync = require('browser-sync').create();
 import del from 'del';
 import runSequence from 'run-sequence';
+import cleanCSS from 'gulp-clean-css';
 
 import browserify from 'browserify';
 import buffer from 'vinyl-buffer';
@@ -30,6 +31,10 @@ gulp.task('styles', function() {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
+    .pipe(cleanCSS({debug: true}, function(details) {
+      console.log(details.name + ': ' + details.stats.originalSize);
+      console.log(details.name + ': ' + details.stats.minifiedSize);
+    }))
     .pipe(gulp.dest('src/public/css'))
     .pipe(browserSync.stream());
 });
