@@ -1,3 +1,4 @@
+// @flow
 import about from './about';
 import home from './home';
 import styleguide from './styleguide';

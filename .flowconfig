@@ -1,0 +1,11 @@
+[ignore]
+build
+
+[include]
+
+
+[libs]
+declare type Response = string
+
+
+[options]

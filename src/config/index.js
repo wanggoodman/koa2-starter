@@ -1,3 +1,4 @@
+// @flow
 'use strict'
 
 import logger from './components/logger'

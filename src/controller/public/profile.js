@@ -1,4 +1,5 @@
-const profile = async (ctx, next) => {
+// @flow
+const profile = async(ctx: Object) => {
 
   ctx.state = {
     active_profile: true,
@@ -13,7 +14,7 @@ const profile = async (ctx, next) => {
       footer: './partials/footer'
     },
   });
-  
+
 }
 
 export default profile;

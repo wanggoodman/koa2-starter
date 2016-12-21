@@ -1,5 +1,6 @@
+// @flow
 export default function errorHandle() {
-  return async (ctx, next) => {
+  return async(ctx: Object, next: () => Promise<any>) => {
     try {
       await next();
       // Handle 404 upstream.

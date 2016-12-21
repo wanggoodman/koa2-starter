@@ -1,4 +1,5 @@
-const login = async (ctx, next) => {
+// @flow
+const login = async(ctx: Object) => {
 
   ctx.state = {
     active_login: true,

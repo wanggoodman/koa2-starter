@@ -1,3 +1,4 @@
+// @flow
 import Koa from 'koa';
 import koaRouter from 'koa-router';
 import serve from 'koa-static';
@@ -20,12 +21,12 @@ import reqLogger from './middleware/reqlogger';
 
 const app = new Koa();
 
-app.use(views(__dirname + '/views', {
+app.use(views(`${__dirname}/views`, {
   map: { hbs: 'handlebars' },
   extension: 'hbs',
 }));
-app.use(serve(__dirname + '/public'));
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(serve(`${__dirname}/public`));
+app.use(favicon(`${__dirname}/public/favicon.ico`));
 app.use(reqLogger())
 app.use(convert(session(app)));
 app.use(compression());

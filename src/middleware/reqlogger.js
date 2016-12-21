@@ -1,5 +1,6 @@
+// @flow
 export default function reqLogger() {
-  return async (ctx, next) => {
+  return async(ctx: Object, next: () => Promise<any>) => {
   const startTime = Date.now();
 
   await next();

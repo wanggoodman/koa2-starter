@@ -56,6 +56,9 @@ gulp.task('scripts', function () {
     var bundler = browserify('src/scripts/main.js')
       .transform(babelify, {
         presets : [ 'es2015', 'stage-0'],
+        plugins: [
+          'transform-flow-strip-types'
+        ],
       });
 
     bundle(bundler);  // Chain other options -- sourcemaps, rename, etc.

@@ -1,6 +1,7 @@
-const home = async(ctx, next) => {
+// @flow
+const home = async(ctx: Object) => {
 
-  const title = await Promise.resolve('Koa 2 Starter Kit')
+  const title: string = await Promise.resolve('Koa 2 Starter Kit')
 
   ctx.state = {
     title,

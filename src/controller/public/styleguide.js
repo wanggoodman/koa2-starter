@@ -1,4 +1,5 @@
-const styleguide = async (ctx, next) => {
+// @flow
+const styleguide = async(ctx: Object) => {
 
   ctx.state = {
     active_styleguide: true,
@@ -13,7 +14,7 @@ const styleguide = async (ctx, next) => {
       footer: './partials/footer'
     },
   });
-  
+
 }
 
 export default styleguide;
