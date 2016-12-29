@@ -5,7 +5,7 @@ const styleguide = async(ctx: Object) => {
     active_styleguide: true,
     title: 'Documentationn Page',
     user: ctx.state.user,
-  }
+  };
 
   await ctx.render('styleguide', {
     partials: {
@@ -15,6 +15,6 @@ const styleguide = async(ctx: Object) => {
     },
   });
 
-}
+};
 
 export default styleguide;

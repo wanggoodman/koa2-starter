@@ -20,7 +20,7 @@ const about = async(ctx: Object) => {
       { roll: 'FrontEnd', technology: 'Bootstrap (removeable)'},
       { roll: 'Deployment', technology: 'Docker'},
     ]
-  }
+  };
 
   ctx.cookies.set('view', n);
 
@@ -32,6 +32,6 @@ const about = async(ctx: Object) => {
     },
   });
 
-}
+};
 
 export default about;

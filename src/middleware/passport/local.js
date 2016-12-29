@@ -1,6 +1,5 @@
 // @flow
-import passport from 'koa-passport'
-import { Strategy as LocalStrategy } from 'passport-local'
+import { Strategy as LocalStrategy } from 'passport-local';
 
 type User = {
   id: number,
@@ -12,15 +11,15 @@ var user: User = {
   id: 1,
   username: 'test',
   avartar: 'https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg'
-}
+};
 
 const local = new LocalStrategy((username: string, password: string, done) => {
 
   if (username === 'test' && password === 'test') {
-    done(null, user)
+    done(null, user);
   } else {
-    done(null, false)
+    done(null, false);
   }
-})
+});
 
 export default local;

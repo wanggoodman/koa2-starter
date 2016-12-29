@@ -21,10 +21,10 @@ router.get('/profile', authed, profile);
 router.get('/login', login);
 router.post('/login', auth);
 router.get('/styleguide', styleguide);
-router.get('/api', api)
+router.get('/api', api);
 router.get('/logout', (ctx) => {
-  ctx.logout()
-  ctx.redirect('/')
-})
+  ctx.logout();
+  ctx.redirect('/');
+});
 
 export default router;

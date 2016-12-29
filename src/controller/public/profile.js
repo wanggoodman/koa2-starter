@@ -5,7 +5,7 @@ const profile = async(ctx: Object) => {
     active_profile: true,
     title: 'My Profile',
     user: ctx.state.user,
-  }
+  };
 
   await ctx.render('profile', {
     partials: {
@@ -15,6 +15,6 @@ const profile = async(ctx: Object) => {
     },
   });
 
-}
+};
 
 export default profile;

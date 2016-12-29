@@ -76,8 +76,7 @@
     "roboto-fontface": "^0.6.0",
     "run-sequence": "^1.2.2",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "webpack": "^1.13.3"
+    "vinyl-source-stream": "^1.1.0"
   },
   "babel": {
     "presets": [
@@ -93,36 +92,5 @@
       "src/public/scripts/**",
       "build/public/scripts/**"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:flowtype/recommended"
-    ],
-    "plugins": [
-      "flowtype"
-    ],
-    "env": {
-      "es6": true,
-      "node": true,
-      "browser": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
-    },
-    "rules": {
-      "camelcase": "error",
-      "arrow-spacing": ["error", { "before": true, "after": true }],
-      "quotes": [
-        2,
-        "single"
-      ],
-      "prefer-rest-params": "error",
-      "prefer-template": "error",
-      "prefer-spread": "error",
-      "require-yield": "error",
-      "rest-spread-spacing": ["error", "never"],
-      "yield-star-spacing": ["error", "after"]
-    }
   }
 }

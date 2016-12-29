@@ -13,16 +13,16 @@ var user: User = {
   id: 1,
   username: 'test',
   avartar: 'https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg'
-}
+};
 
 passport.serializeUser((user: User, done) => {
-  done(null, user.id)
-})
+  done(null, user.id);
+});
 
 passport.deserializeUser((id: number, done) => {
-  done(null, user)
-})
+  done(null, user);
+});
 
-passport.use(local)
+passport.use(local);
 
 export default passport;

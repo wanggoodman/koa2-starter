@@ -5,6 +5,6 @@ const authed = async(ctx: Object, next: () => Promise<any>) => {
   } else {
     ctx.redirect('/login');
   }
-}
+};
 
 export default authed;

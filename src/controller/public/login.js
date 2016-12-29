@@ -5,7 +5,7 @@ const login = async(ctx: Object) => {
     active_login: true,
     title: 'Login Page',
     user: ctx.state.user,
-  }
+  };
 
   await ctx.render('login', {
     partials: {
@@ -14,6 +14,7 @@ const login = async(ctx: Object) => {
       footer: './partials/footer'
     },
   });
-}
+  
+};
 
 export default login;

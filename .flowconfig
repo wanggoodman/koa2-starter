@@ -5,7 +5,5 @@ build
 
 
 [libs]
-declare type Response = string
-
 
 [options]

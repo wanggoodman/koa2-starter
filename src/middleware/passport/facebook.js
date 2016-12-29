@@ -1,5 +1,4 @@
-import passport from 'koa-passport'
-import { Strategy as FacebookStrategy } from 'passport-facebook'
+import { Strategy as FacebookStrategy } from 'passport-facebook';
 
 var user = {
   id: '2',
