@@ -22,7 +22,7 @@ const about = async(ctx: Object) => {
     ]
   };
 
-  ctx.cookies.set('view', n);
+  ctx.cookies.set('view', n, { signed: true });
 
   await ctx.render('about', {
     partials: {

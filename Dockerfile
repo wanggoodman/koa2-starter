@@ -1,4 +1,4 @@
-FROM node:4.4.7
+FROM node:7
 
 RUN useradd --user-group --create-home --shell /bin/false nodejs
 

@@ -41,4 +41,4 @@ app.use(passport.session());
 app.use(router.routes())
   .use(router.allowedMethods())
   .listen(config.server.port)
-  .on('error', (err) => console.error(err))
+  .on('error', (err) => console.error(err));
