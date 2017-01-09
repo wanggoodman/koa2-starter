@@ -1,4 +1,5 @@
 // @flow
+
 const authed = async(ctx: Object, next: () => Promise<any>) => {
   if(ctx.isAuthenticated()){
     await next();

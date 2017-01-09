@@ -1,5 +1,5 @@
 // @flow
-const about = async(ctx: Object) => {
+const about = async (ctx: Object) => {
 
   const n:number = ~~ctx.cookies.get('view') + 1;
 

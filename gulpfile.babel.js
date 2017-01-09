@@ -53,21 +53,21 @@ function bundle (bundler) {
 }
 
 gulp.task('scripts', function () {
-    var bundler = browserify('src/scripts/main.js')
-      .transform(babelify, {
-        presets : [ 'es2015', 'stage-0'],
-        plugins: [
-          'transform-flow-strip-types'
-        ],
-      });
+  const bundler = browserify('src/scripts/main.js')
+    .transform(babelify, {
+      presets : [ 'es2015', 'stage-0'],
+      plugins: [
+        'transform-flow-strip-types'
+      ],
+    });
 
-    bundle(bundler);  // Chain other options -- sourcemaps, rename, etc.
-})
+  bundle(bundler);  // Chain other options -- sourcemaps, rename, etc.
+});
 
 function lint(files, options) {
   return gulp.src(files)
     .pipe($.eslint({ fix: true }))
-    .pipe(reload({stream: true, once: true}))
+    .pipe(reload({ stream: true, once: true }))
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
 }

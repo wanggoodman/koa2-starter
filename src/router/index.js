@@ -2,6 +2,8 @@ import Router from 'koa-router';
 
 import authed from '../middleware/authed';
 
+import { auth } from '../controller/auth';
+import api from '../controller/api';
 import {
   home,
   about,
@@ -9,9 +11,6 @@ import {
   styleguide,
   login
 } from '../controller/public';
-
-import { auth } from '../controller/auth';
-import api from '../controller/api';
 
 const router = new Router();
 
